@@ -33,7 +33,7 @@
       <p>One hero, one deck, one run at a time—and every run gets published.</p>
     </div>
   </header>
-  <div class="statusbar"><div class="status-inner"><span>In active development</span><span>Latest entry · October 7, 2026</span></div></div>
+  <div class="statusbar"><div class="status-inner"><span>In active development</span><span>Latest entry · October 8, 2026</span></div></div>
 
   <main>
     <section class="intro" aria-labelledby="about-title">
@@ -47,6 +47,7 @@
         <a href="#eleven-locks-and-a-shipped-cli">October 5, 2026 — Eleven Locks and a Shipped CLI</a>
         <a href="#the-halo-that-wouldnt-die">October 6, 2026 — The Halo That Wouldn't Die</a>
         <a href="#lock-all-of-them">October 7, 2026 — Lock All of Them</a>
+        <a href="#bruiser-one-scale-six-states">October 8, 2026 — Bruiser: One Scale, Six States</a>
       </nav>
     </section>
 
@@ -262,6 +263,39 @@
         <h3>Coda — the next morning</h3>
 
         <p>I commissioned slot 39: a 32-frame “drawn-in” battle entrance for the heroes. Sketch to ink to fill, no hands visible, lines true to the final character so it reads as the comic drawing the hero into existence; the last three frames are byte-exact copies of idle F01 for a seamless handoff. The first Dread candidate came back with faint scanline artifacts on F18–F22 from the fill transition and went straight back for cleanup. Forty more transparent items — twenty consumables, twenty artifacts — are in the generation queue. The cast is drawn. Now we get them in the engine.</p>
+      </div>
+    </article>
+
+    <article class="post post--entry4" id="bruiser-one-scale-six-states">
+      <header class="post-header">
+        <div class="post-meta"><time class="date" datetime="2026-10-08">October 8, 2026</time><span class="issue">Entry 05</span></div>
+        <h2>Bruiser: One Scale, Six States</h2>
+        <p class="lead">The Warehouse Bruiser has a shared-scale review package: 96 candidate frames across six states, with hit still approximate and death held out for an anatomy decision.</p>
+      </header>
+      <div class="article-body">
+        <p>The next problem was scale across the Bruiser's animation states. I chose the locked idle as the size authority. That gives the finishing pass a fixed reference without changing the acting in every pose just to make its silhouette fit a box.</p>
+        <p>Idle, prepare, prepared-idle, and multi-hit stay at 1.000×. Their original RGBA pixels are unchanged inside the added transparent padding. Attack and hit use a single 0.800× factor for each whole state. No frame-by-frame resizing, no independent horizontal stretch, and no new color correction, outline, or shadow pass.</p>
+        <figure class="article-figure article-figure--wide">
+          <div class="article-visual"><a href="assets/bruiser-scale-review-2026-10-08/cross-state-after-same-pixel-scale.png"><img loading="lazy" width="2240" height="390" src="assets/bruiser-scale-review-2026-10-08/cross-state-after-same-pixel-scale.png" alt="Bruiser state comparison at a shared display scale: idle, prepare, prepared-idle, multi-hit, attack, hit, and unchanged deferred death" /></a></div>
+          <figcaption>Same-pixel-scale comparison. Six candidate states, plus the unchanged death source at the right. Open the image for the full-size sheet.</figcaption>
+        </figure>
+        <h3>Attack fits. Hit needs eyes.</h3>
+        <p>Attack's factor comes from comparable upright and recovery poses, using head and torso segments rather than total silhouette height. Hit is less settled: its early upright measurements point to roughly 0.78×, but later recoil poses change the proportions and projection. The delivered 0.800× hit is an approximate visual-review candidate. It has not passed the strict two-pose, two-segment scale check.</p>
+        <figure class="article-figure article-figure--wide">
+          <div class="article-visual"><img loading="lazy" width="640" height="378" src="assets/bruiser-scale-review-2026-10-08/attack-before-after-playback.png" alt="Animated before-and-after comparison of all sixteen Bruiser attack frames, with the candidate uniformly scaled to 80 percent" /></div>
+          <figcaption>Attack before/after, 16 ordered frames. Review playback is approximately 12fps; this is not a change to engine timing.</figcaption>
+        </figure>
+        <figure class="article-figure article-figure--wide">
+          <div class="article-visual"><img loading="lazy" width="640" height="378" src="assets/bruiser-scale-review-2026-10-08/hit-before-after-playback.png" alt="Animated before-and-after comparison of all sixteen Bruiser hit frames, showing the approximate 80-percent scale candidate" /></div>
+          <figcaption>Hit before/after. The whole-state factor avoids size pumping, but residual anatomy and entry registration still need visual review.</figcaption>
+        </figure>
+        <h3>Keep the fall intact.</h3>
+        <p>Death stays out of the candidate set. Its head and torso measurements disagree with the footwear proxies, so forcing a single answer now would hide an unresolved anatomy choice. All 32 death frames remain unchanged in four separate original strips. Matching the height of a falling silhouette to a standing idle would flatten the motion we already approved.</p>
+        <p>The candidate delivery is twelve strips holding 96 frames in six state folders. Each cell is 1280×1400; each eight-cell strip is 10240×1400. The extra transparent canvas prevents clipping and does not enlarge the idle art. The death originals use their own existing layout and must not share one slicing and pivot preset with these candidates.</p>
+        <h3>What the checks actually prove</h3>
+        <p>Original sources are preserved. Frame counts, order, intentional repeats, duplicate endpoints, strip splitting, clipping, and margins passed their mechanical checks. Seven annotated APNG comparisons were decoded and checked frame by frame across all 128 ordered source frames, including the unchanged death sequence.</p>
+        <p>That is packaging and playback evidence, not a new production lock. Hit's scale remains approximate, death is deferred, and the shadow-versus-strict-alpha-cleanup question is still open. Interactive browser playback was not tested in the original review package; Unity import and in-engine transitions have not been tested for these candidates. No new Gate A or Gate B approval is being claimed.</p>
+        <p class="takeaway"><strong>Takeaway:</strong> the locked idle sets the scale. Six states now have a reviewable package; the remaining anatomy decisions stay visible instead of getting buried inside a “128 frames normalized” claim.</p>
       </div>
     </article>
   </main>
